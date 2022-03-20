@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APILabb4.Models", "APILabb4.Models\APILabb4.Models.csproj", "{451F58E6-3B9E-4661-965D-C14BA5BAD14D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APILabb4.API", "APILabb4.API\APILabb4.API.csproj", "{432983D7-707F-417E-A8F0-7595969279C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{451F58E6-3B9E-4661-965D-C14BA5BAD14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451F58E6-3B9E-4661-965D-C14BA5BAD14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451F58E6-3B9E-4661-965D-C14BA5BAD14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451F58E6-3B9E-4661-965D-C14BA5BAD14D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432983D7-707F-417E-A8F0-7595969279C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432983D7-707F-417E-A8F0-7595969279C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432983D7-707F-417E-A8F0-7595969279C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432983D7-707F-417E-A8F0-7595969279C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {662175A6-1087-4070-9E22-C418C98D723D}
+	EndGlobalSection
+EndGlobal
