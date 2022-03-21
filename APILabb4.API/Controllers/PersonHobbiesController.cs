@@ -34,16 +34,16 @@ namespace APILabb4.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PersonHobby>> GetPersonHobby(int id)
+        public async Task<IActionResult> GetPersonHobby(int id)
         {
             try
             {
                 var result = await _personhobby.GetSingle(id);
-                if (result == null)
+                if (result.Any())
                 {
-                    return NotFound();
+                    return Ok(result);
                 }
-                return result;
+                return NotFound();
             }
             catch (Exception)
             {
@@ -71,25 +71,6 @@ namespace APILabb4.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<PersonHobby>> DeletePH(int id)
-        {
-            try
-            {
-                var phToDelete = await _personhobby.GetSingle(id);
-                if (phToDelete == null)
-                {
-                    return NotFound($"ID {id} not found...");
-                }
-                return await _personhobby.Delete(id);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error to delete from database...");
-            }
-        }
-
         [HttpPut("{id}")]
         public async Task<ActionResult<PersonHobby>> UpdatePH(int id, PersonHobby ph)
         {
@@ -99,8 +80,8 @@ namespace APILabb4.API.Controllers
                 {
                     return BadRequest("ID does not match...");
                 }
-                var PHToUpdate = await _personhobby.GetSingle(id);
-                if (PHToUpdate != null)
+                var PHToUpdate = await _personhobby.GetOne(id);
+                if (PHToUpdate == null)
                 {
                     return NotFound($"ID {id} not found");
                 }

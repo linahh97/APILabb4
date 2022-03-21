@@ -23,26 +23,19 @@ namespace APILabb4.API.Services
             return result.Entity;
         }
 
-        public async Task<Hobby> Delete(int id)
-        {
-            var result = await _appContext.Hobbies.FirstOrDefaultAsync(h => h.HobbyId == id);
-            if (result != null)
-            {
-                _appContext.Hobbies.Remove(result);
-                await _appContext.SaveChangesAsync();
-                return result;
-            }
-            return null;
-        }
-
         public async Task<IEnumerable<Hobby>> GetAll()
         {
             return await _appContext.Hobbies.ToListAsync();
         }
 
-        public async Task<Hobby> GetSingle(int id)
+        public Task<Hobby> GetOne(int id)
         {
-            return await _appContext.Hobbies.FirstOrDefaultAsync(h => h.HobbyId == id);
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Hobby>> GetSingle(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Hobby> Update(Hobby Entity)

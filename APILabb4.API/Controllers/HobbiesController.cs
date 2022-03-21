@@ -33,63 +33,6 @@ namespace APILabb4.API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Hobby>> GetHobby(int id)
-        {
-            try
-            {
-                var result = await _hobby.GetSingle(id);
-                if (result == null)
-                {
-                    return NotFound();
-                }
-                return result;
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error to retrieve single product from database...");
-            }
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<Hobby>> AddNewHobby(Hobby newHobby)
-        {
-            try
-            {
-                if (newHobby == null)
-                {
-                    return BadRequest();
-                }
-                var addedHobby = await _hobby.Add(newHobby);
-                return CreatedAtAction(nameof(GetHobby), new { id = addedHobby.HobbyId }, addedHobby);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error to add in database...");
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Hobby>> DeleteHobby(int id)
-        {
-            try
-            {
-                var hobbyToDelete = await _hobby.GetSingle(id);
-                if (hobbyToDelete == null)
-                {
-                    return NotFound($"Hobby with ID {id} not found...");
-                }
-                return await _hobby.Delete(id);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error to delete from database...");
-            }
-        }
-
         [HttpPut("{id}")]
         public async Task<ActionResult<Hobby>> UpdateHobby(int id, Hobby hob)
         {

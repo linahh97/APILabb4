@@ -8,9 +8,9 @@ namespace APILabb4.API.Services
     public interface IUserHobby<T>
     {
         Task<IEnumerable<T>> GetAll();
-        Task<T> GetSingle(int id);
+        Task<IEnumerable<T>> GetSingle(int id);
+        Task<T> GetOne(int id);
         Task<T> Add(T newEntity);
         Task<T> Update(T Entity);
-        Task<T> Delete(int id);
     }
 }

@@ -23,36 +23,24 @@ namespace APILabb4.API.Services
             return result.Entity;
         }
 
-        public async Task<PersonHobby> Delete(int id)
-        {
-            var result = await _appContext.PersonHobbies.FirstOrDefaultAsync(ph => ph.PersonHobbyId == id);
-            if (result != null)
-            {
-                _appContext.PersonHobbies.Remove(result);
-                await _appContext.SaveChangesAsync();
-                return result;
-            }
-            return null;
-        }
-
         public async Task<IEnumerable<PersonHobby>> GetAll()
         {
             return await _appContext.PersonHobbies.ToListAsync();
         }
 
-        public async Task<PersonHobby> GetSingle(int id)
+        public async Task<PersonHobby> GetOne(int id)
         {
-            var result = await _appContext.PersonHobbies.FirstOrDefaultAsync(ph => ph.PersonId == id);
-            if (result == null)
+            return await _appContext.PersonHobbies.FirstOrDefaultAsync(p => p.PersonHobbyId == id);
+        }
+
+        public async Task<IEnumerable<PersonHobby>> GetSingle(int id)
+        {
+            IQueryable<PersonHobby> qw = _appContext.PersonHobbies;
+            if (!qw.Equals(id))
             {
-                _appContext.PersonHobbies.Include(ph => ph.HobbyId).Select(ph => new
-                {
-                    personId = ph.PersonId,
-                    hobbyId = ph.HobbyId
-                });
-                return result;
+                qw = qw.Where(p => p.PersonId == id);
             }
-            return null;
+            return qw.ToList();
         }
 
         public async Task<PersonHobby> Update(PersonHobby Entity)
