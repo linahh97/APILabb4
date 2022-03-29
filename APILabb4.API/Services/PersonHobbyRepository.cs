@@ -25,17 +25,17 @@ namespace APILabb4.API.Services
 
         public async Task<IEnumerable<PersonHobby>> GetAll()
         {
-            return await _appContext.PersonHobbies.ToListAsync();
+            return await _appContext.PersonHobbies.Include(h => h.Hobby).ToListAsync();
         }
 
         public async Task<PersonHobby> GetOne(int id)
         {
-            return await _appContext.PersonHobbies.FirstOrDefaultAsync(p => p.PersonHobbyId == id);
+            return await _appContext.PersonHobbies.Include(h => h.Hobby).FirstOrDefaultAsync(p => p.PersonHobbyId == id);
         }
 
         public async Task<IEnumerable<PersonHobby>> GetSingle(int id)
         {
-            IQueryable<PersonHobby> qw = _appContext.PersonHobbies;
+            IQueryable<PersonHobby> qw = _appContext.PersonHobbies.Include(h => h.Hobby);
             if (!qw.Equals(id))
             {
                 qw = qw.Where(p => p.PersonId == id);

@@ -29,11 +29,11 @@ namespace APILabb4.API.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error to retrieve data from database...");
+                    "Error to retrieve all data from database...");
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetPersonHobby(int id)
         {
             try
@@ -48,7 +48,7 @@ namespace APILabb4.API.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error to retrieve single product from database...");
+                    "Error to retrieve single data from database...");
             }
         }
 
